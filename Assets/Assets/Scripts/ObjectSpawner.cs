@@ -22,7 +22,7 @@ public class ObjectSpawner : MonoBehaviour
 {
     if (Input.GetMouseButtonDown(0)) // Left click
     {
-        Vector3 spawnPosition = new Vector3(0.1f, 0.8f, -0.062f); // Replace with any desired coordinates
+        Vector3 spawnPosition = new Vector3(-0.2f, 1f, -0.1f); // Replace with any desired coordinates
 
         if (spawnedObject == null)
         {

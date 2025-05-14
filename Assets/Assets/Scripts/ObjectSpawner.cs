@@ -1,70 +1,86 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectSpawner : MonoBehaviour
-{
-    public GameObject objectPrefab;     // Assign your .glb prefab here
+{    
+    public GameObject[] objectPrefabs;     // Assign your .glb prefab here
     private GameObject spawnedObject;
 
     private Vector3 lastMousePos;
     private float rotationSpeed = 15f;
     private float scaleSpeed = 0.01f;
     private float minScale = 0.001f;
-    private float maxScale = 0.01f;
+    private float maxScale = 0.05f;   
+
+    private bool autoRotate = true;
+    private float rotationSpeedAuto = 10f;
+
+    [SerializeField]
+    private ObjectDescriptionManager objectDescriptionManager;
+
+    public void DropdownIndex(int index)
+    {   
+        Despawn();
+
+        if (index >= 0 && index <= objectPrefabs.Length)
+        {            
+            
+            objectDescriptionManager.ShowObjectDescription(index);
+                                
+            HandleSpawn(index);        
+        }        
+    }
 
     void Update()
-    {
-        HandleSpawn();
+    {        
         HandleRotation();
         HandleScaling();
     }
 
-    void HandleSpawn()
-{
-    if (Input.GetMouseButtonDown(0)) // Left click
+    public void Despawn()
     {
-        Vector3 spawnPosition = new Vector3(-0.2f, 1f, -0.1f); // Replace with any desired coordinates
-
-        if (spawnedObject == null)
+       if (spawnedObject != null)
         {
-            spawnedObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
-        }
-        else
-        {
-            spawnedObject.transform.position = spawnPosition;
+            Destroy(spawnedObject);
         }
     }
-}
-
-    // void HandleSpawn()
+    private void HandleSpawn(int index)
+    {
+    // if (Input.GetMouseButtonDown(0)) // Left click
     // {
-    //     if (Input.GetMouseButtonDown(0)) // Left click
-    //     {
-    //         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    //         if (Physics.Raycast(ray, out RaycastHit hit))
-    //         {
-    //             if (spawnedObject == null)
-    //             {
-    //                 spawnedObject = Instantiate(objectPrefab, hit.point, Quaternion.identity);
-    //             }
-    //             else
-    //             {
-    //                 spawnedObject.transform.position = hit.point;
-    //             }
-    //         }
-    //     }
+        Vector3 spawnPosition = new Vector3(-0.2f, 1.5f, -0.1f); // Replace with any desired coordinates
+            spawnedObject = Instantiate(objectPrefabs[index], spawnPosition, Quaternion.identity);
+        
+        // else
+        // {
+        //     spawnedObject.transform.position = spawnPosition;
+        // }
     // }
+    }  
 
     void HandleRotation()
     {
-        if (spawnedObject != null && Input.GetMouseButton(1)) // Right mouse drag
-        {
-            Vector3 delta = Input.mousePosition - lastMousePos;
-            float rotX = delta.y * rotationSpeed * Time.deltaTime;
-            float rotY = -delta.x * rotationSpeed * Time.deltaTime;
-            spawnedObject.transform.Rotate(Vector3.right, rotX, Space.World);
-            spawnedObject.transform.Rotate(Vector3.up, rotY, Space.World);
+        if (spawnedObject != null && Input.GetMouseButton(0))
+        {                
+            autoRotate = true;
         }
-        lastMousePos = Input.mousePosition;
+        else{
+            if (spawnedObject != null && Input.GetMouseButton(1)) // Right mouse drag
+            {
+                autoRotate = false;
+                Vector3 delta = Input.mousePosition - lastMousePos;
+                float rotX = delta.y * rotationSpeed * Time.deltaTime;
+                float rotY = -delta.x * rotationSpeed * Time.deltaTime;
+                spawnedObject.transform.Rotate(Vector3.right, rotX, Space.World);
+                spawnedObject.transform.Rotate(Vector3.up, rotY, Space.World);
+            }
+            lastMousePos = Input.mousePosition;
+        }
+            
+        if (autoRotate && spawnedObject != null)
+        {
+            spawnedObject.transform.Rotate(Vector3.up, rotationSpeedAuto * Time.deltaTime);
+        }
     }
 
     void HandleScaling()

@@ -5,7 +5,7 @@ public class SceneChanger : MonoBehaviour
 {
     public void GoToLabView()
     {
-        SceneManager.LoadScene("Scene2");
+        SceneManager.LoadScene("Lab");
     }
     public void ChangeScene(string sceneName)
     {

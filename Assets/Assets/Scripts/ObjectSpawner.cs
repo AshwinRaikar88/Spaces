@@ -1,12 +1,16 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ObjectSpawner : MonoBehaviour
 {    
-    public GameObject[] objectPrefabs;     // Assign your .glb prefab here
+    // public GameObject[] objectPrefabs;     // Assign your .glb prefab here
     private GameObject spawnedObject;
+    public TMP_Dropdown dropdown;
+    private MoleculeInfo[] moleculeData;
 
-    private Vector3 lastMousePos;
+    private Vector3 lastMousePos;   
     private float rotationSpeed = 15f;
     private float scaleSpeed = 0.01f;
     private float minScale = 0.001f;
@@ -16,19 +20,48 @@ public class ObjectSpawner : MonoBehaviour
     private float rotationSpeedAuto = 10f;
 
     [SerializeField]
-    private ObjectDescriptionManager objectDescriptionManager;
+    public ObjectDescriptionManager objectDescriptionManager;
 
-    public void DropdownIndex(int index)
-    {   
+ void Start()
+    {
+        LoadMoleculeData();
+        PopulateDropdown();
+    }
+
+    void LoadMoleculeData()
+    {
+        TextAsset jsonText = Resources.Load<TextAsset>("molecules_data");
+        if (jsonText != null)
+        {
+            MoleculeInfoList list = JsonUtility.FromJson<MoleculeInfoList>("{\"molecules\":" + jsonText.text + "}");
+            moleculeData = list.molecules;
+        }
+        else
+        {
+            Debug.LogError("Molecule JSON file not found in Resources");
+        }
+    }
+
+    void PopulateDropdown()
+    {
+        dropdown.ClearOptions();
+        List<string> options = new List<string>();
+
+        foreach (var molecule in moleculeData)
+        {
+            options.Add(molecule.title);
+        }
+
+        dropdown.AddOptions(options);
+        dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
+    }
+
+    void OnDropdownValueChanged(int index)
+    {
         Despawn();
-
-        if (index >= 0 && index <= objectPrefabs.Length)
-        {            
-            
-            objectDescriptionManager.ShowObjectDescription(index);
-                                
-            HandleSpawn(index);        
-        }        
+        string prefabName = moleculeData[index].prefabName;
+        objectDescriptionManager.ShowObjectDescription(index);
+        SpawnPrefabByName(prefabName);
     }
 
     void Update()
@@ -44,19 +77,20 @@ public class ObjectSpawner : MonoBehaviour
             Destroy(spawnedObject);
         }
     }
-    private void HandleSpawn(int index)
+    
+    public void SpawnPrefabByName(string prefabName)
     {
-    // if (Input.GetMouseButtonDown(0)) // Left click
-    // {
-        Vector3 spawnPosition = new Vector3(-0.2f, 1.5f, -0.1f); // Replace with any desired coordinates
-            spawnedObject = Instantiate(objectPrefabs[index], spawnPosition, Quaternion.identity);
-        
-        // else
-        // {
-        //     spawnedObject.transform.position = spawnPosition;
-        // }
-    // }
-    }  
+        GameObject prefab = Resources.Load<GameObject>("Prefabs/" + prefabName);
+        if (prefab != null)
+        {
+            Vector3 spawnPosition = new Vector3(-0.2f, 1.5f, -0.1f); // Replace with any desired coordinates
+            spawnedObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
+        }
+        else
+        {
+            Debug.LogWarning($"Prefab '{prefabName}' not found in Resources/Molecules/");
+        }
+    }
 
     void HandleRotation()
     {

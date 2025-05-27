@@ -1,10 +1,9 @@
 using UnityEngine;
 using TMPro;
-using System;
 
 public class ObjectDescriptionManager : MonoBehaviour
 {
-    public TMP_Text titleText;         // Assign TextMeshPro UI components in Inspector
+    public TMP_Text titleText;
     public TMP_Text descriptionText;
     
     private MoleculeInfo[] moleculeData;
@@ -32,7 +31,7 @@ public class ObjectDescriptionManager : MonoBehaviour
         {
             Debug.LogError("Molecule description file not found!");
         }
-    }
+    }   
 
    public void ShowObjectDescription(int id)
     {

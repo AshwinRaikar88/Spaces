@@ -119,54 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &30745164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 30745166}
-  - component: {fileID: 30745165}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &30745165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30745164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e9b760f21c84f11936b8f8dc00e5c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectPrefabs:
-  - {fileID: 1195321552039407306, guid: 0a41a386e0ff7496bb4156c1dc0a68c2, type: 3}
-  - {fileID: 6837237963807827780, guid: 4da904e71031d4c6fa0bc3827cf174dd, type: 3}
-  objectDescriptionManager: {fileID: 0}
---- !u!4 &30745166
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 30745164}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &36292917
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,6 +476,37 @@ RectTransform:
   m_AnchoredPosition: {x: -50, y: 32}
   m_SizeDelta: {x: 160, y: 61}
   m_Pivot: {x: 1, y: 0}
+--- !u!1 &241556378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 241556379}
+  m_Layer: 0
+  m_Name: === Misc ===
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &241556379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 241556378}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.112854, y: 0.37548828, z: -0.07354145}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,13 +2038,7 @@ MonoBehaviour:
   m_Value: 0
   m_MultiSelect: 0
   m_Options:
-    m_Options:
-    - m_Text: 8C3C
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
-    - m_Text: Birch Pollen
-      m_Image: {fileID: 0}
-      m_Color: {r: 1, g: 1, b: 1, a: 1}
+    m_Options: []
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2069,18 +2046,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: ObjectSpawner, Assembly-CSharp
         m_MethodName: Despawn
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1040098849}
-        m_TargetAssemblyTypeName: ObjectSpawner, Assembly-CSharp
-        m_MethodName: DropdownIndex
-        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2140,9 +2105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e9b760f21c84f11936b8f8dc00e5c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectPrefabs:
-  - {fileID: 1195321552039407306, guid: 0a41a386e0ff7496bb4156c1dc0a68c2, type: 3}
-  - {fileID: 1553446206487989887, guid: a875fb6f0b99940d8a3cd3ddf096ae0b, type: 3}
+  dropdown: {fileID: 1040098846}
   objectDescriptionManager: {fileID: 38633436}
 --- !u!1 &1047951271
 GameObject:
@@ -4541,7 +4504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 8C3C
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 65a616fdcaa734c1887a881afc303ae0, type: 2}
   m_sharedMaterial: {fileID: 1976083005737587895, guid: 65a616fdcaa734c1887a881afc303ae0, type: 2}
@@ -4971,7 +4934,7 @@ SceneRoots:
   - {fileID: 1973238098}
   - {fileID: 1265412308}
   - {fileID: 444910901}
-  - {fileID: 30745166}
-  - {fileID: 2140470801}
   - {fileID: 1569313333}
+  - {fileID: 241556379}
   - {fileID: 38633437}
+  - {fileID: 2140470801}

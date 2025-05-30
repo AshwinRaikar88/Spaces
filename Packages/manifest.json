@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "co.haply.inverse": "2.2.0",
     "com.unify.unified-universal-blur": "https://github.com/lukakldiashvili/Unified-Universal-Blur.git",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.7",
@@ -45,5 +46,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  }
+  },
+  "scopedRegistries": [
+    {
+      "name": "Haply Robotics",
+      "url": "https://unitypackages.haply.co",
+      "scopes": [
+        "co.haply"
+      ],
+      "overrideBuiltIns": true
+    }
+  ]
 }

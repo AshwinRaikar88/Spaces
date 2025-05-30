@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 190273177}
   - component: {fileID: 190273176}
   - component: {fileID: 190273175}
+  - component: {fileID: 190273178}
   m_Layer: 5
   m_Name: StartBtn
   m_TagString: Untagged
@@ -376,7 +377,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -448,6 +449,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190273173}
   m_CullTransparentMesh: 1
+--- !u!114 &190273178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190273173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a56cc1593fc194e7283696b81ea9ba80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonImage: {fileID: 190273176}
+  theText: {fileID: 1135395593}
 --- !u!1 &512291152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1763,8 +1778,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Immersive VR Microbiology lab
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 631cf263de99572449d86d8c13ca7e3b, type: 2}
-  m_sharedMaterial: {fileID: -8658676060182280108, guid: 631cf263de99572449d86d8c13ca7e3b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 1d2c19b803d48604f8dc1a34c466cace, type: 2}
+  m_sharedMaterial: {fileID: 5977187807974955507, guid: 1d2c19b803d48604f8dc1a34c466cace, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1772,7 +1787,7 @@ MonoBehaviour:
     serializedVersion: 2
     rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
+  m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}

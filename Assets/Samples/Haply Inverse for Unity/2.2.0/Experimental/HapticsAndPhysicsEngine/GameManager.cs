@@ -35,7 +35,7 @@ namespace Haply.Samples.Experimental.HapticsAndPhysicsEngine
 
         protected void Start()
         {
-            physicsEffector = FindFirstObjectByType<PhysicsHapticEffector>();
+            physicsEffector = FindObjectOfType<PhysicsHapticEffector>();
         }
 
         // Update is called once per frame

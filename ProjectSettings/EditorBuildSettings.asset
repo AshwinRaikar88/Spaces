@@ -8,12 +8,14 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lab.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/HomeScreen.unity
     guid: bde96771f7a82494284e864e2d7c9d24
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: e0f108d0aa3b65540b25b910fd06380e
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 2c0f41ec6a132274dba6a2fdade75202, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: ff3b75e5592f87046a12b82db4bbd43c, type: 2}
   m_UseUCBPForAssetBundles: 0

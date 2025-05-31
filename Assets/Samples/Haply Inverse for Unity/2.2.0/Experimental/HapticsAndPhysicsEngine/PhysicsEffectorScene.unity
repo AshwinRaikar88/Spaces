@@ -1528,8 +1528,8 @@ MonoBehaviour:
   physicsFrequency: 1000
   clientConfiguration: {fileID: 1833050977}
   physicsEffector: {fileID: 360021235}
-  enabledForceMaterial: {fileID: 2100000, guid: 72865ba1c1da9f3448abf4823b60d3ba, type: 2}
-  disabledForceMaterial: {fileID: 2100000, guid: 739f261f2b9031240982186428ceb8a7, type: 2}
+  enabledForceMaterial: {fileID: 2100000, guid: 739f261f2b9031240982186428ceb8a7, type: 2}
+  disabledForceMaterial: {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
   helpText: {fileID: 854650937771514230}
   frequenciesPanel: {fileID: 2094392255}
   physicsFrequencyText: {fileID: 555192163}

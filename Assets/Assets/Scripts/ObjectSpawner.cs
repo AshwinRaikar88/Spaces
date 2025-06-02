@@ -2,10 +2,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class ObjectSpawner : MonoBehaviour
 {    
     // public GameObject[] objectPrefabs;     // Assign your .glb prefab here
+     public Slider scaleSlider;      
     private GameObject spawnedObject;
     public TMP_Dropdown dropdown;
     private MoleculeInfo[] moleculeData;
@@ -15,6 +17,7 @@ public class ObjectSpawner : MonoBehaviour
     private float scaleSpeed = 0.01f;
     private float minScale = 0.001f;
     private float maxScale = 0.05f;   
+    public float scaleStep = 0.001f;
 
     private bool autoRotate = true;
     private float rotationSpeedAuto = 10f;
@@ -22,10 +25,12 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField]
     public ObjectDescriptionManager objectDescriptionManager;
 
- void Start()
+    void Start()
     {
         LoadMoleculeData();
         PopulateDropdown();
+        if (scaleSlider != null)
+            scaleSlider.onValueChanged.AddListener(OnSliderChanged);
     }
 
     void LoadMoleculeData()
@@ -70,9 +75,25 @@ public class ObjectSpawner : MonoBehaviour
         HandleScaling();
     }
 
+     public void OnSliderChanged(float sliderValue)
+    {
+        if (spawnedObject != null)
+        {
+            XRGrabInteractable interactable = spawnedObject.GetComponent<XRGrabInteractable>();
+        
+            if (interactable == null)
+                return;
+
+            float scaleValue = Mathf.Lerp(minScale, maxScale, sliderValue);
+            Vector3 newScale = Vector3.one * scaleValue;
+
+            interactable.SetTargetLocalScale(newScale);
+        }
+    }
+
     public void Despawn()
     {
-       if (spawnedObject != null)
+        if (spawnedObject != null)
         {
             Destroy(spawnedObject);
         }
@@ -90,6 +111,26 @@ public class ObjectSpawner : MonoBehaviour
         {
             Debug.LogWarning($"Prefab '{prefabName}' not found in Resources/Molecules/");
         }
+    }
+
+    public void ScaleUp()
+    {
+        if (spawnedObject!= null){
+            XRGrabInteractable interactable = spawnedObject.GetComponent<XRGrabInteractable>();
+            Vector3 scale = interactable.GetTargetLocalScale();
+            scale += Vector3.one * scaleStep;
+            interactable.SetTargetLocalScale(scale);
+        }    
+    }
+
+    public void ScaleDown()
+    {
+        if (spawnedObject!= null){
+            XRGrabInteractable interactable = spawnedObject.GetComponent<XRGrabInteractable>();
+            Vector3 scale = interactable.GetTargetLocalScale();
+            scale -= Vector3.one * scaleStep;
+            interactable.SetTargetLocalScale(scale);
+        }    
     }
 
     void HandleRotation()

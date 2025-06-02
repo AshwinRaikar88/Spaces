@@ -6,6 +6,7 @@ public class ObjectDescriptionManager : MonoBehaviour
     public TMP_Text titleText;
     public TMP_Text descriptionText;
     
+    
     private MoleculeInfo[] moleculeData;
 
     void Start()
